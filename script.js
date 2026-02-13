@@ -1,13 +1,13 @@
 // ===== CONFIGURATION =====
 const CONFIG = {
     hearts: {
-        spawnInterval: 2000, // milliseconds between each heart (optimized)
+        spawnInterval: 3500, // Increased from 2000 (optimized for performance)
         emojis: ['❤️', '💕', '💖', '💗', '💓', '💝'],
         minSize: 20,
         maxSize: 40
     },
     sparkles: {
-        count: 25,
+        count: 12, // Reduced from 25 (still looks great)
         spawnInterval: 150,
         minDelay: 0,
         maxDelay: 2000
@@ -18,10 +18,21 @@ const CONFIG = {
 class HeartsSystem {
     constructor() {
         this.container = document.getElementById('hearts-container');
+        this.pool = [];
+        this.maxPoolSize = 15;
         this.init();
     }
 
     init() {
+        // Pre-create pool of heart elements
+        for (let i = 0; i < 5; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.display = 'none';
+            this.container.appendChild(heart);
+            this.pool.push(heart);
+        }
+
         // Create initial hearts
         this.createHeart();
 
@@ -31,9 +42,24 @@ class HeartsSystem {
         }, CONFIG.hearts.spawnInterval);
     }
 
+    getHeart() {
+        for (let heart of this.pool) {
+            if (heart.style.display === 'none') {
+                return heart;
+            }
+        }
+        if (this.pool.length < this.maxPoolSize) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            this.container.appendChild(heart);
+            this.pool.push(heart);
+            return heart;
+        }
+        return this.pool[0];
+    }
+
     createHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
+        const heart = this.getHeart();
 
         // Random emoji from the array
         const randomEmoji = CONFIG.hearts.emojis[
@@ -59,12 +85,11 @@ class HeartsSystem {
         const duration = 5 + Math.random() * 3; // 5-8 seconds
         heart.style.animationDuration = `${duration}s`;
 
-        // Add to DOM
-        this.container.appendChild(heart);
+        heart.style.display = 'block';
 
-        // Remove heart after animation completes
+        // Hide heart after animation completes
         setTimeout(() => {
-            this.container.removeChild(heart);
+            heart.style.display = 'none';
         }, duration * 1000);
     }
 }
@@ -193,10 +218,10 @@ class HorizontalHeartsSystem {
         // Create initial horizontal hearts
         this.createHorizontalHeart();
 
-        // Set recurring horizontal heart generation (reduced frequency for performance)
+        // Set recurring horizontal heart generation (optimized for performance)
         setInterval(() => {
             this.createHorizontalHeart();
-        }, 4500); // Every 4.5 seconds
+        }, 7000); // Every 7 seconds (reduced from 4.5)
     }
 
     createHorizontalHeart() {
@@ -301,7 +326,7 @@ class CursorTrail {
     constructor() {
         this.loveTexts = ['love', 'love', 'love', '♥', '💕'];
         this.lastSpawnTime = 0;
-        this.spawnThreshold = 50; // milliseconds between spawns
+        this.spawnThreshold = 100; // Increased from 50ms (better performance)
         this.init();
     }
 

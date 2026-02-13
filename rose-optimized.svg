@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
+  <defs>
+    <!-- Gradients -->
+    <radialGradient id="rose-gradient-1" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#ff1744;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b0000;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="rose-gradient-2" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#ff4569;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c41235;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="stem-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a7c59;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d5a3a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Stem -->
+  <path d="M 200 550 Q 205 480 200 400 Q 195 320 200 250" 
+        fill="none" stroke="url(#stem-gradient)" stroke-width="6" 
+        stroke-linecap="round" class="stem"/>
+  
+  <!-- Leaves -->
+  <ellipse cx="210" cy="400" rx="25" ry="12" fill="#4a7c59" opacity="0.8" transform="rotate(30 210 400)" class="leaf"/>
+  <ellipse cx="190" cy="350" rx="20" ry="10" fill="#4a7c59" opacity="0.8" transform="rotate(-25 190 350)" class="leaf"/>
+  
+  <!-- Rose Petals - Outer Layer (5 petals) -->
+  <ellipse cx="200" cy="180" rx="35" ry="50" fill="url(#rose-gradient-1)" opacity="0.9" transform="rotate(0 200 180)" class="petal petal-outer-1"/>
+  <ellipse cx="230" cy="200" rx="35" ry="50" fill="url(#rose-gradient-1)" opacity="0.9" transform="rotate(72 200 200)" class="petal petal-outer-2"/>
+  <ellipse cx="220" cy="240" rx="35" ry="50" fill="url(#rose-gradient-1)" opacity="0.9" transform="rotate(144 200 200)" class="petal petal-outer-3"/>
+  <ellipse cx="180" cy="240" rx="35" ry="50" fill="url(#rose-gradient-1)" opacity="0.9" transform="rotate(216 200 200)" class="petal petal-outer-4"/>
+  <ellipse cx="170" cy="200" rx="35" ry="50" fill="url(#rose-gradient-1)" opacity="0.9" transform="rotate(288 200 200)" class="petal petal-outer-5"/>
+  
+  <!-- Rose Petals - Middle Layer (5 petals) -->
+  <ellipse cx="200" cy="195" rx="28" ry="40" fill="url(#rose-gradient-2)" opacity="0.95" transform="rotate(36 200 200)" class="petal petal-mid-1"/>
+  <ellipse cx="215" cy="215" rx="28" ry="40" fill="url(#rose-gradient-2)" opacity="0.95" transform="rotate(108 200 200)" class="petal petal-mid-2"/>
+  <ellipse cx="210" cy="230" rx="28" ry="40" fill="url(#rose-gradient-2)" opacity="0.95" transform="rotate(180 200 200)" class="petal petal-mid-3"/>
+  <ellipse cx="190" cy="230" rx="28" ry="40" fill="url(#rose-gradient-2)" opacity="0.95" transform="rotate(252 200 200)" class="petal petal-mid-4"/>
+  <ellipse cx="185" cy="215" rx="28" ry="40" fill="url(#rose-gradient-2)" opacity="0.95" transform="rotate(324 200 200)" class="petal petal-mid-5"/>
+  
+  <!-- Rose Center (3 petals, tighter) -->
+  <ellipse cx="200" cy="205" rx="18" ry="25" fill="#ff1744" class="petal petal-inner-1"/>
+  <ellipse cx="210" cy="215" rx="18" ry="25" fill="#ff1744" transform="rotate(120 200 210)" class="petal petal-inner-2"/>
+  <ellipse cx="190" cy="215" rx="18" ry="25" fill="#ff1744" transform="rotate(240 200 210)" class="petal petal-inner-3"/>
+  
+  <!-- Center Core -->
+  <circle cx="200" cy="210" r="8" fill="#8b0000"/>
+</svg>
